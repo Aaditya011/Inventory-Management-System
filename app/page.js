@@ -50,14 +50,17 @@ const ModalBox = styled(Box)({
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
+  bgcolor: 'background.paper',  // Make sure this is set to a non-transparent value
+  border: '1px solid #000',
   boxShadow: 24,
   p: 4,
   display: 'flex',
   flexDirection: 'column',
   gap: 3,
+  // Ensuring the background is not transparent
+  backgroundColor: '#f0f0f0', 
 });
+
 
 export default function Home() {
   const [inventory, setInventory] = useState([]);
@@ -144,7 +147,7 @@ export default function Home() {
                 onChange={(e) => setItemName(e.target.value)}
               />
               <Button
-                variant="outlined"
+                variant="contained"
                 onClick={() => {
                   addItem(itemName);
                   setItemName('');
@@ -157,7 +160,7 @@ export default function Home() {
           </ModalBox>
         </Modal>
 
-        <Button variant="contained" color="primary" onClick={handleOpen}>
+        <Button variant="contained"  onClick={handleOpen}>
           Add New Item
         </Button>
 
@@ -181,7 +184,7 @@ export default function Home() {
               <Box
                 key={name}
                 width="100%"
-                minHeight="150px"
+                minHeight="80px"
                 display="flex"
                 justifyContent="space-between"
                 alignItems="center"
